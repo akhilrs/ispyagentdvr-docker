@@ -15,4 +15,4 @@ echo $PLATFORMS
 
 ./generate.sh -p="$PLATFORMS"
 
-docker buildx bake --pull --push --platform $P
+# docker buildx bake --pull --push 
