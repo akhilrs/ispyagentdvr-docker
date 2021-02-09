@@ -43,7 +43,7 @@ jobs:
       -
         name: Generate bake file
         run:
-          ./generate.sh -p="linux/amd64 linux/arm64 linux/arm/v5 linux/arm/v6 linux/arm/v7 linux/arm64/v8"
+          ./generate.sh -p="linux/amd64 linux/arm64 linux/arm/v6 linux/arm/v7"
 
       -
         name: Build and push
