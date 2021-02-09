@@ -35,7 +35,7 @@ done
 
 
 DOCKER_BAKE_FILE=${1:-"docker-bake.hcl"}
-TAGS=${TAGS:-"3.1.3.0"}
+TAGS=${TAGS:-"latest 3.1.3.0"}
 FILE_LOCATION=${FILE_LOCATION:-"https://ispyfiles.azureedge.net/downloads/Agent_Linux64_3_1_3_0.zip"}
 DEFAULT_FILE_LOCATION=${DEFAULT_FILE_LOCATION:-"https://www.ispyconnect.com/api/Agent/DownloadLocation2?productID=24&is64=true&platform=Linux"}
 TZ=${TZ:-"Asia/Kolkata"}
@@ -57,8 +57,12 @@ group "default" {
 }
 target "common" {
 	platforms = [$P]
-	args = {"FILE_LOCATION" = "$FILE_LOCATION", "DEFAULT_FILE_LOCATION" = "$DEFAULT_FILE_LOCATION", "TZ" = "$TZ"}
-    dockerfile = "Dockerfile"
+	args = {
+        "FILE_LOCATION" = "$FILE_LOCATION",
+        "DEFAULT_FILE_LOCATION" = "$DEFAULT_FILE_LOCATION",
+        "TZ" = "$TZ"
+    }
+  dockerfile = "Dockerfile"
 }
 target "latest" {
     inherits = ["common"]
