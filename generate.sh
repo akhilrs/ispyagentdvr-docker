@@ -28,9 +28,15 @@ group "default" {
 target "common" {
 	platforms = [$P]
 	args = {"FILE_LOCATION" = "$FILE_LOCATION", "DEFAULT_FILE_LOCATION" = "$DEFAULT_FILE_LOCATION", "TZ" = "$TZ"}
-}
-target "main" {
-	inherits = ["common"]
-	dockerfile = "Dockerfile"
+    dockerfile = "Dockerfile"
 }
 EOF
+
+for TAG in $TAGS_EXTRA; do cat >> "$DOCKER_BAKE_FILE" << EOF
+target "$TAG" {
+  inherits = ["common"]
+	args = {"BASETAG" = "$TAG"}
+  tags = ["$IMAGE_NAME:$TAG"]
+}
+EOF
+done
