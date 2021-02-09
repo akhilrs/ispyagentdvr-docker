@@ -48,6 +48,4 @@ jobs:
         with:
           files: |
             ./docker-bake.hcl
-          targets: |
-            release
           push: true
