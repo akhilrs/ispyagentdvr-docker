@@ -16,7 +16,7 @@ jobs:
       #   id: prepare
       #   run: |
       #     echo ::set-output name=docker_username::akhilrs
-      # -
+      -
         name: Checkout
         uses: actions/checkout@v2
       -
